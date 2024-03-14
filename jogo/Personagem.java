@@ -6,10 +6,10 @@ public class Personagem{
     int sono;
 
     void cacar(){
-        System.out.printf("%s esta cacando...\n", nome);
+        System.out.printf(" o %s esta cacando...\n", nome);
     }
     
     void comer(){
-        System.out.printf("%s esta comendo...\n", nome);
+        System.out.printf(" o %s esta comendo...\n", nome);
     }
 }
