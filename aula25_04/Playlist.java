@@ -1,5 +1,7 @@
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 public class Playlist {
   public static void main(String[] args) {
     ArrayList <Musica> musicas = new ArrayList<>();
@@ -38,6 +40,16 @@ public class Playlist {
           );
           break;
         }
+        case 3:{
+          Collections.sort(musicas);
+          JOptionPane.showMessageDialog(null, musicas);
+          break;
+        }
+        case 4: {
+          Collections.sort(musicas, new PorAvaliacaoComparator());
+          JOptionPane.showMessageDialog (null, musicas);
+          break;
+        }
         case 0:{
           JOptionPane.showMessageDialog(null, "Até mais");
           break;
@@ -47,3 +59,20 @@ public class Playlist {
     }while (op != 0);
   }
 }
+
+class PorAvaliacaoComparator implements Comparator <Musica>{
+  @Override
+  public int compare(Musica m1, Musica m2) {
+    if(m1.getAvaliacao() > m2.getAvaliacao())
+      return -1;
+    if (m1.getAvaliacao() == m2.getAvaliacao())
+      return 0;
+    return 1;
+    // return m1.getAvaliacao() > m2.getAvaliacao() ? -1 : m1.getAvaliacao() == m2.getAvaliacao() ? 0 : 1;
+  }
+
+}
+
+//fazer um comparator que compara pelo comprimento do nome
+//fazer um comparator que compara por titulo, depois por avaliacao
+//adicionar dois cases para testar
