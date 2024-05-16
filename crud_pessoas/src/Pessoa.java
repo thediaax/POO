@@ -15,6 +15,15 @@ public class Pessoa {
     private String fone;
     private String email;
     private int idade;
-
+    public Pessoa(int codigo){
+        this.codigo = codigo;
+    }
+    
+    public String toString(){
+        return String.format(
+            "codigo: %d, nome: %s, fone: %s, email: idade: %d",
+            codigo, nome, fone, email, idade
+        );
+    }
     
 }
