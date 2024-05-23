@@ -43,7 +43,7 @@ public class PessoaDAO {
 
     public void atualizar(Pessoa p) throws Exception {
         // 1. Especificar comando sql
-        var sql = "UPDATE tb_pessoa SET nome?, fone=?, email=?, idade=? WHERE cod_pessoa = ?";
+        var sql = "UPDATE tb_pessoa SET nome=?, fone=?, email=?, idade=? WHERE cod_pessoa = ?";
         // 2. Estabelecer uma conexao com o SGBD
         // try with resources
         try (
@@ -57,6 +57,7 @@ public class PessoaDAO {
             ps.setInt(4, p.getIdade());
             ps.setInt(5, p.getCodigo());
             // 5. Executar o comando
+            ps.execute();
             // 6. fechar os recursos
         }
 

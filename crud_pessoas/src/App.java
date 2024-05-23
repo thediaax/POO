@@ -23,13 +23,13 @@ public class App {
                     }
                     case 2: {
                         var codigo = Integer.parseInt(JOptionPane.showInputDialog("Qual o codigo do usuario?"));
-                        var pt = new Pessoa(codigo, "", "", "",0);
+                        var p = new Pessoa(codigo);
                         var dao0 = new PessoaDAO();
-                        if (dao0.consultarCod(pt)) {
+                        if (dao0.consultarCod(p)) {
 
                             var msg = "o que deseja atualizar?\n1- Nome\n2- Fone\n3- Email\n4- Idade";
                             int ops = Integer.parseInt(JOptionPane.showInputDialog(msg));
-                            var id = 0;
+                            codigo = 0;
                             var nome = "";
                             var fone = "";
                             var email = "";
@@ -38,29 +38,39 @@ public class App {
                             switch (ops) {
                                 case 1: {
                                     nome = JOptionPane.showInputDialog("Nome?");
-                                    pt.setNome(nome);
+                                    p.setNome(nome);
+                                    var dao = new PessoaDAO();
+                                    dao.atualizar(p);
                                     break;
                                 }
 
                                 case 2: {
                                     fone = JOptionPane.showInputDialog("Fone?");
-                                    pt.setNome(fone);
+                                    p.setNome(fone);
+                                    var dao = new PessoaDAO();
+                                    dao.atualizar(p);
                                     break;
                                 }
                                 case 3: {
                                     email = JOptionPane.showInputDialog("Email?");
-                                    pt.setEmail(email);
+                                    p.setEmail(email);
+                                    var dao = new PessoaDAO();
+                                    dao.atualizar(p);
                                     break;
                                 }
 
                                 case 4: {
                                     idade = Integer.parseInt(JOptionPane.showInputDialog("Idade?"));
-                                    pt.setIdade(idade);
+                                    p.setIdade(idade);
+                                    var dao = new PessoaDAO();
+                                    dao.atualizar(p);
                                     break;
                                 }
                                 case 5: {
-                                    id = Integer.parseInt(JOptionPane.showInputDialog("Codigo?"));
-                                    pt.setCodigo(codigo);
+                                    codigo = Integer.parseInt(JOptionPane.showInputDialog("Codigo?"));
+                                    p.setCodigo(codigo);
+                                    var dao = new PessoaDAO();
+                                    dao.atualizar(p);
                                     break;
                                 }
                             }
@@ -73,21 +83,21 @@ public class App {
                             // var idade = Integer.parseInt(JOptionPane.showInputDialog("Idade?"));
 
                             // 2. construir um objeto pessoa
-                            var p = new Pessoa(id, nome, fone, email, idade);
+                            // var pt = new Pessoa(id, nome, fone, email, idade);
                             // 3. construir um objeto dao
-                            var dao = new PessoaDAO();
+                             dao0 = new PessoaDAO();
                             // 4. atualizar usando dao
-                            dao.atualizar(p);
+                            dao0.atualizar(p);
                             // 5. confirmar atualização
                             JOptionPane.showMessageDialog(null, "Atualização OK!");
-                        }
-                        else{
+                        } else {
                             JOptionPane.showMessageDialog(null, "O codigo inserido não existe");
                         }
                         break;
                     }
                     case 3: {
-                        var codigo = Integer.parseInt(JOptionPane.showInputDialog("Qual pessoa deseja excluir? insira o codigo."));
+                        var codigo = Integer
+                                .parseInt(JOptionPane.showInputDialog("Qual pessoa deseja excluir? insira o codigo."));
                         var p = new Pessoa(codigo, "", "", "", 0);
                         var dao = new PessoaDAO();
                         dao.deletar(p);
